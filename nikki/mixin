@@ -29,7 +29,7 @@ proxy-groups:
   - {name: CN_Site, type: select, proxies: [DIRECT, Default, Smart]}
   - {name: Apple, type: select, proxies: [DIRECT, Default, Smart]}
   - {name: Bilibili, type: select, proxies: [DIRECT, Default, Smart]}
-  - {name: Steam, type: select, proxies: [DIRECT, Smart, Auto, HK-Smart, JP-Smart, SG-Smart, US-Smart, HK, JP, SG, US, ALL, HK-Failback, JP-Failback, SG-Failback, US-Failback]}
+  - {name: Steam, type: select, proxies: [Smart, Auto, HK-Smart, JP-Smart, SG-Smart, US-Smart, HK, JP, SG, US, ALL, HK-Failback, JP-Failback, SG-Failback, US-Failback, DIRECT]}
   - {name: OneDrive, type: select, proxies: [DIRECT, Smart, Auto, HK-Smart, JP-Smart, SG-Smart, US-Smart, HK, JP, SG, US, ALL, HK-Failback, JP-Failback, SG-Failback, US-Failback]}
   - {name: Microsoft, type: select, proxies: [DIRECT, Smart, Auto, HK-Smart, JP-Smart, SG-Smart, US-Smart, HK, JP, SG, US, ALL, HK-Failback, JP-Failback, SG-Failback, US-Failback]}
   - {name: MIS, type: select, proxies: [Smart, Auto, HK-Smart, JP-Smart, SG-Smart, US-Smart, HK, JP, SG, US, ALL, HK-Failback, JP-Failback, SG-Failback, US-Failback, DIRECT]}
