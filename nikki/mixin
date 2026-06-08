@@ -1,38 +1,41 @@
 proxy-groups:
-  - {name: Default, type: select, proxies: [Smart, Auto, HK-Smart, JP-Smart, SG-Smart, US-Smart, HK, JP, SG, US, ALL, HK-Failback, JP-Failback, SG-Failback, US-Failback, DIRECT]}
-  - {name: Smart, type: smart, uselightgbm: true, collectdata: false, policy-priority: "SG:1.3;TW:1.2;HK:1.1", include-all: true, interval: 300, filter: "(?=.*(港|HK|(?i)Hong|新加坡|狮城|SG|Singapore|台|TW|Taiwan|美|US|USA|America|(?i)States))^((?!(日|韩|深)).)*$"}
+  - {name: Default, type: select, proxies: [Smart, Auto, HK-Smart, JP-Smart, SG-Smart, TW-Smart, US-Smart, HK, JP, SG, TW, US, ALL, HK-Failback, JP-Failback, SG-Failback, TW-Failback, US-Failback, DIRECT]}
+  - {name: Smart, type: smart, uselightgbm: true, collectdata: false, policy-priority: "SG:1.4;TW:1.2;HK:1.0", include-all: true, interval: 300, filter: "(?=.*(港|HK|(?i)Hong|新加坡|狮城|SG|Singapore|台|TW|Taiwan))^((?!(日|韩|深)).)*$"}
+  - {name: SG-Smart, type: smart, uselightgbm: true, collectdata: false, include-all: true, interval: 300, filter: "(?=.*(新加坡|坡|狮城|SG|Singapore))^((?!(港|台|韩|日|美)).)*$" }
+  - {name: TW-Smart, type: smart, uselightgbm: true, collectdata: false, include-all: true, interval: 300, filter: "(?=.*(台|TW|Taiwan))^((?!(港|韩|日|美|新)).)*$" }
   - {name: HK-Smart, type: smart, uselightgbm: true, collectdata: false, include-all: true, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$"}
   - {name: JP-Smart, type: smart, uselightgbm: true, collectdata: false, include-all: true, interval: 300, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$" }
-  - {name: SG-Smart, type: smart, uselightgbm: true, collectdata: false, include-all: true, interval: 300, filter: "(?=.*(新加坡|坡|狮城|SG|Singapore))^((?!(港|台|韩|日|美)).)*$" }
   - {name: US-Smart, type: smart, uselightgbm: true, collectdata: false, include-all: true, interval: 300, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新)).)*$"}
   - {name: Auto, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!(DIRECT)).)*$"}
+  - {name: SG-Failback, type: fallback, include-all: true, interval: 300, filter: "(?=.*(新加坡|坡|狮城|SG|Singapore))^((?!(台|日|韩|深|美)).)*$"}
+  - {name: TW-Failback, type: fallback, include-all: true, interval: 300, filter: "(?=.*(台|TW|Taiwan))^((?!(港|韩|日|美|新)).)*$" }
   - {name: HK-Failback, type: fallback, include-all: true, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$"}
   - {name: JP-Failback, type: fallback, include-all: true, interval: 300, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$"}
-  - {name: SG-Failback, type: fallback, include-all: true, interval: 300, filter: "(?=.*(新加坡|坡|狮城|SG|Singapore))^((?!(台|日|韩|深|美)).)*$"}
   - {name: US-Failback, type: fallback, include-all: true, interval: 300, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|韩|新|日)).)*$"}
+  - {name: SG, type: select, include-all: true, filter: "(?=.*(新加坡|坡|狮城|SG|Singapore))^((?!(台|日|韩|深|美)).)*$"}
+  - {name: TW, type: select, include-all: true, filter: "(?=.*(台|TW|Taiwan))^((?!(港|韩|日|美|新)).)*$" }
   - {name: HK, type: select, include-all: true, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$"}
   - {name: JP, type: select, include-all: true, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$"}
-  - {name: SG, type: select, include-all: true, filter: "(?=.*(新加坡|坡|狮城|SG|Singapore))^((?!(台|日|韩|深|美)).)*$"}
   - {name: US, type: select, include-all: true, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|韩|新|日)).)*$"}
-  - {name: Google, type: select, proxies: [Smart, Auto, HK-Smart, JP-Smart, SG-Smart, US-Smart, HK, JP, SG, US, ALL, HK-Failback, JP-Failback, SG-Failback, US-Failback, DIRECT]}
-  - {name: YouTube, type: select, proxies: [Smart, Auto, HK-Smart, JP-Smart, SG-Smart, US-Smart, HK, JP, SG, US, ALL, HK-Failback, JP-Failback, SG-Failback, US-Failback, DIRECT]}
-  - {name: GFW, type: select, proxies: [Smart, Auto, HK-Smart, JP-Smart, SG-Smart, US-Smart, HK, JP, SG, US, ALL, HK-Failback, JP-Failback, SG-Failback, US-Failback, DIRECT]}
-  - {name: GitHub, type: select, proxies: [Smart, Auto, HK-Smart, JP-Smart, SG-Smart, US-Smart, HK, JP, SG, US, ALL, HK-Failback, JP-Failback, SG-Failback, US-Failback, DIRECT]}
-  - {name: Telegram, type: select, proxies: [Smart, Auto, HK-Smart, JP-Smart, SG-Smart, US-Smart, HK, JP, SG, US, ALL, HK-Failback, JP-Failback, SG-Failback, US-Failback, DIRECT]}
-  - {name: Speedtest, type: select, proxies: [Smart, Auto, HK-Smart, JP-Smart, SG-Smart, US-Smart, HK, JP, SG, US, ALL, HK-Failback, JP-Failback, SG-Failback, US-Failback, DIRECT]}
-  - {name: Discord, type: select, proxies: [Smart, Auto, HK-Smart, JP-Smart, SG-Smart, US-Smart, HK, JP, SG, US, ALL, HK-Failback, JP-Failback, SG-Failback, US-Failback, DIRECT]}
-  - {name: Spotify, type: select, proxies: [Smart, Auto, HK-Smart, JP-Smart, SG-Smart, US-Smart, HK, JP, SG, US, ALL, HK-Failback, JP-Failback, SG-Failback, US-Failback, DIRECT]}
-  - {name: TikTok, type: select, proxies: [Smart, Auto, HK-Smart, JP-Smart, SG-Smart, US-Smart, HK, JP, SG, US, ALL, HK-Failback, JP-Failback, SG-Failback, US-Failback, DIRECT]}
-  - {name: OpenAI, type: select, proxies: [Smart, Auto, HK-Smart, JP-Smart, SG-Smart, US-Smart, HK, JP, SG, US, ALL, HK-Failback, JP-Failback, SG-Failback, US-Failback, DIRECT]}
-  - {name: Netflix, type: select, proxies: [Smart, Auto, HK-Smart, JP-Smart, SG-Smart, US-Smart, HK, JP, SG, US, ALL, HK-Failback, JP-Failback, SG-Failback, US-Failback, DIRECT]}
-  - {name: Bahamut, type: select, proxies: [Smart, Auto, HK-Smart, JP-Smart, SG-Smart, US-Smart, HK, JP, SG, US, ALL, HK-Failback, JP-Failback, SG-Failback, US-Failback, DIRECT]}
+  - {name: Google, type: select, proxies: [Default, Smart, Auto, HK-Smart, JP-Smart, SG-Smart, TW-Smart, US-Smart, HK, JP, SG, TW, US, ALL, HK-Failback, JP-Failback, SG-Failback, TW-Failback, US-Failback, DIRECT]}
+  - {name: YouTube, type: select, proxies: [Default, Smart, Auto, HK-Smart, JP-Smart, SG-Smart, TW-Smart, US-Smart, HK, JP, SG, TW, US, ALL, HK-Failback, JP-Failback, SG-Failback, TW-Failback, US-Failback, DIRECT]}
+  - {name: GFW, type: select, proxies: [Default, Smart, Auto, HK-Smart, JP-Smart, SG-Smart, TW-Smart, US-Smart, HK, JP, SG, TW, US, ALL, HK-Failback, JP-Failback, SG-Failback, TW-Failback, US-Failback, DIRECT]}
+  - {name: GitHub, type: select, proxies: [Default, Smart, Auto, HK-Smart, JP-Smart, SG-Smart, TW-Smart, US-Smart, HK, JP, SG, TW, US, ALL, HK-Failback, JP-Failback, SG-Failback, TW-Failback, US-Failback, DIRECT]}
+  - {name: Telegram, type: select, proxies: [Default, Smart, Auto, HK-Smart, JP-Smart, SG-Smart, TW-Smart, US-Smart, HK, JP, SG, TW, US, ALL, HK-Failback, JP-Failback, SG-Failback, TW-Failback, US-Failback, DIRECT]}
+  - {name: Speedtest, type: select, proxies: [Default, Smart, Auto, HK-Smart, JP-Smart, SG-Smart, TW-Smart, US-Smart, HK, JP, SG, TW, US, ALL, HK-Failback, JP-Failback, SG-Failback, TW-Failback, US-Failback, DIRECT]}
+  - {name: Discord, type: select, proxies: [Default, Smart, Auto, HK-Smart, JP-Smart, SG-Smart, TW-Smart, US-Smart, HK, JP, SG, TW, US, ALL, HK-Failback, JP-Failback, SG-Failback, TW-Failback, US-Failback, DIRECT]}
+  - {name: Spotify, type: select, proxies: [Default, Smart, Auto, HK-Smart, JP-Smart, SG-Smart, TW-Smart, US-Smart, HK, JP, SG, TW, US, ALL, HK-Failback, JP-Failback, SG-Failback, TW-Failback, US-Failback, DIRECT]}
+  - {name: TikTok, type: select, proxies: [Default, Smart, Auto, HK-Smart, JP-Smart, SG-Smart, TW-Smart, US-Smart, HK, JP, SG, TW, US, ALL, HK-Failback, JP-Failback, SG-Failback, TW-Failback, US-Failback, DIRECT]}
+  - {name: OpenAI, type: select, proxies: [Default, Smart, Auto, HK-Smart, JP-Smart, SG-Smart, TW-Smart, US-Smart, HK, JP, SG, TW, US, ALL, HK-Failback, JP-Failback, SG-Failback, TW-Failback, US-Failback, DIRECT]}
+  - {name: Netflix, type: select, proxies: [Default, Smart, Auto, HK-Smart, JP-Smart, SG-Smart, TW-Smart, US-Smart, HK, JP, SG, TW, US, ALL, HK-Failback, JP-Failback, SG-Failback, TW-Failback, US-Failback, DIRECT]}
+  - {name: Bahamut, type: select, proxies: [Default, Smart, Auto, HK-Smart, JP-Smart, SG-Smart, TW-Smart, US-Smart, HK, JP, SG, TW, US, ALL, HK-Failback, JP-Failback, SG-Failback, TW-Failback, US-Failback, DIRECT]}
   - {name: CN_Site, type: select, proxies: [DIRECT, Default, Smart]}
   - {name: Apple, type: select, proxies: [DIRECT, Default, Smart]}
   - {name: Bilibili, type: select, proxies: [DIRECT, Default, Smart]}
-  - {name: Steam, type: select, proxies: [Smart, Auto, HK-Smart, JP-Smart, SG-Smart, US-Smart, HK, JP, SG, US, ALL, HK-Failback, JP-Failback, SG-Failback, US-Failback, DIRECT]}
-  - {name: OneDrive, type: select, proxies: [DIRECT, Smart, Auto, HK-Smart, JP-Smart, SG-Smart, US-Smart, HK, JP, SG, US, ALL, HK-Failback, JP-Failback, SG-Failback, US-Failback]}
-  - {name: Microsoft, type: select, proxies: [DIRECT, Smart, Auto, HK-Smart, JP-Smart, SG-Smart, US-Smart, HK, JP, SG, US, ALL, HK-Failback, JP-Failback, SG-Failback, US-Failback]}
-  - {name: MIS, type: select, proxies: [Smart, Auto, HK-Smart, JP-Smart, SG-Smart, US-Smart, HK, JP, SG, US, ALL, HK-Failback, JP-Failback, SG-Failback, US-Failback, DIRECT]}
+  - {name: Steam, type: select, proxies: [Default, Smart, Auto, HK-Smart, JP-Smart, SG-Smart, TW-Smart, US-Smart, HK, JP, SG, TW, US, ALL, HK-Failback, JP-Failback, SG-Failback, TW-Failback, US-Failback, DIRECT]}
+  - {name: OneDrive, type: select, proxies: [DIRECT, Default, Smart, Auto, HK-Smart, JP-Smart, SG-Smart, TW-Smart, US-Smart, HK, JP, SG, TW, US, ALL, HK-Failback, JP-Failback, SG-Failback, TW-Failback, US-Failback]}
+  - {name: Microsoft, type: select, proxies: [DIRECT, Default, Smart, Auto, HK-Smart, JP-Smart, SG-Smart, TW-Smart, US-Smart, HK, JP, SG, TW, US, ALL, HK-Failback, JP-Failback, SG-Failback, TW-Failback, US-Failback]}
+  - {name: MIS, type: select, proxies: [Default, Smart, Auto, HK-Smart, JP-Smart, SG-Smart, TW-Smart, US-Smart, HK, JP, SG, TW, US, ALL, HK-Failback, JP-Failback, SG-Failback, TW-Failback, US-Failback, DIRECT]}
   - {name: ALL, type: select, include-all: true}
   
 rules:
